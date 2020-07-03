@@ -1,14 +1,20 @@
 window.onload = function () {
-  var numbersArr = {
+  var gameObject = {
     numbers: []
   }
   
+  // Initialize numbers [1,2,3,4,5,6,7,8] in gameObject.numbers
   for(let i=1; i<9; i++){
-    numbersArr.numbers.push(i);
+    gameObject.numbers.push(i);
   }
-  numbersArr.numbers[8] = undefined;
-  shuffle(numbersArr);
+
+  // Initialize last position as undefined
+  gameObject.numbers[8] = undefined;
+
+  // Shuffle the array
+  shuffle(gameObject);
   
+  // possible moves array
   var positions = [
     [1,3],
     [0,2,4],
@@ -24,29 +30,32 @@ window.onload = function () {
   var app = new Vue({
 		el: '#app',
 		data:{
-      numbers: numbersArr.numbers,
+      numbers: gameObject.numbers,
       disableClick: false
     },
     methods: {
       callme(index) {
+        // diabledClick = true, if the game is finished
         if(!this.disableClick) {
-          for(var position of positions[index]) {
-            if(this.numbers[position] == undefined) {
-              // https://stackoverflow.com/questions/44800470/vue-js-updated-array-item-value-doesnt-update-in-page
-              this.$set(this.numbers, position, this.numbers[index]);
-              this.$set(this.numbers, index, undefined);
-              if(this.checkWin()) {
-                // setTimeout(()=>{
-                //   alert('You Win!');
-                // }, 200);
-                this.disableClick = true;
-              }
+            //check winning combinations for each winning combination in positions array
+            for(var position of positions[index]) {
+                // if any of the cell of the combination contains undefined
+                if(this.numbers[position] == undefined) {
+                // swap current index with the position index
+                // https://stackoverflow.com/questions/44800470/vue-js-updated-array-item-value-doesnt-update-in-page
+                this.$set(this.numbers, position, this.numbers[index]);
+                this.$set(this.numbers, index, undefined);
+                // check if the table is ordered already
+                if(this.checkWin()) {
+                    // Disable the click, Game Over!
+                    this.disableClick = true;
+                }
+                }
             }
-          }
         }
       },
       checkWin() {
-        // [1,2,3,4,5,6,7,8]
+        // Check [1,2,3,4,5,6,7,8]
         for(var index = 0, number=1; index < 8, number < 9; index++, number++) {
           if(this.numbers[index] != number){
             return false;
