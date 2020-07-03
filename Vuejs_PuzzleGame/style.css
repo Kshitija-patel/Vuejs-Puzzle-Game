@@ -1,0 +1,32 @@
+td {
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  background-color: aliceblue;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+td:hover {
+  cursor: pointer;
+}
+td span {
+  font-size: 30px;
+  font-family: cursive;
+  margin: 0 auto;
+  width: 100%;
+}
+table {
+  box-shadow: 3px 2px 4px 0px lightgrey;
+}
+button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.win-txt {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: darkgoldenrod;
+}

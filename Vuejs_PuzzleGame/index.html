@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+    <title>Vue Final Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="Vuejs_Puzzle.js"></script>
+	</head>
+	<body>
+	
+	<div id="app">
+    
+    <table>
+      <tr>
+        <td v-on:click="callme(0)"><span>{{numbers[0]}}</span></td>
+        <td v-on:click="callme(1)"><span>{{numbers[1]}}</span></td>
+        <td v-on:click="callme(2)"><span>{{numbers[2]}}</span></td>
+      </tr>
+      
+      <tr>
+        <td v-on:click="callme(3)"><span>{{numbers[3]}}</span></td>
+        <td v-on:click="callme(4)"><span>{{numbers[4]}}</span></td>
+        <td v-on:click="callme(5)"><span>{{numbers[5]}}</span></td>
+      </tr>
+      <tr>
+        <td v-on:click="callme(6)"><span>{{numbers[6]}}</span></td>
+        <td v-on:click="callme(7)"><span>{{numbers[7]}}</span></td>
+        <td v-on:click="callme(8)"><span>{{numbers[8]}} {{disableClick ? '9' : ''}}</span></td>
+      </tr>
+    </table>
+    <button v-on:click="restartGame()">
+      Restart Game
+    </button>
+    <p class="win-txt" v-if="disableClick"> You won!</p>
+  </div>
+	</body>
+</html>
